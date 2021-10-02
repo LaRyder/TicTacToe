@@ -35,10 +35,20 @@ namespace TicTacToe
             {
                 if (board.WinningLetter == 'X')
                 {
-                    Console.WriteLine("The computer won....womp");
+                    Console.WriteLine("The computer won....WOMP WOMP WOOOMMMMMPPPP");
                 }
                 else
-                    Console.WriteLine("YOU WON!");
+                Console.ForegroundColor = ConsoleColor.Blue;
+
+                Console.WriteLine(" ÛÛÛÛÛ ÛÛÛÛÛ                        ÛÛÛÛÛ   ÛÛÛ   ÛÛÛÛÛ                       ||  ||   ");
+                Console.WriteLine("°°ÛÛÛ °°ÛÛÛ                        °°ÛÛÛ   °ÛÛÛ  °°ÛÛÛ                        ||  ||   ");
+                Console.WriteLine(" °°ÛÛÛ ÛÛÛ    ÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛ    °ÛÛÛ   °ÛÛÛ   °ÛÛÛ   ÛÛÛÛÛÛ  ÛÛÛÛÛÛÛÛ     ||  ||   ");
+                Console.WriteLine("  °°ÛÛÛÛÛ    ÛÛÛ°°ÛÛÛ°°ÛÛÛ °ÛÛÛ     °ÛÛÛ   °ÛÛÛ   °ÛÛÛ  ÛÛÛ°°ÛÛÛ°°ÛÛÛ°°ÛÛÛ    ||  ||   ");
+                Console.WriteLine("   °°ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ     °°ÛÛÛ  ÛÛÛÛÛ  ÛÛÛ  °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
+                Console.WriteLine("    °ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ      °°°ÛÛÛÛÛ°ÛÛÛÛÛ°   °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
+                Console.WriteLine("    ÛÛÛÛÛ   °°ÛÛÛÛÛÛ  °°ÛÛÛÛÛÛÛÛ       °°ÛÛÛ °°ÛÛÛ     °°ÛÛÛÛÛÛ  ÛÛÛÛ ÛÛÛÛÛ            ");
+                Console.WriteLine("    °°°°°     °°°°°°    °°°°°°°°         °°°   °°°       °°°°°°  °°°° °°°°°   °°  °°   ");
+                Console.ResetColor();
             }
         }
 
@@ -58,6 +68,8 @@ namespace TicTacToe
 
                 int spot = Array.IndexOf(board.BoardArray, Letter);
                 board.takeTurn(spot, 'O');
+                Console.Clear();
+                Thread.Sleep(1000);
             }
         }
 
@@ -66,11 +78,13 @@ namespace TicTacToe
             int t = rnd.Next(0, 9);
             if (board.BoardArray[t] == 'O' || board.BoardArray[t] == 'X')
             {
-                ComputerTakesTurn();    //Find another random spot
+                ComputerTakesTurn();
             }
             else
             {
                 board.takeTurn(t, 'X');
+                Console.Clear();
+                Thread.Sleep(1000);
             }
         }
 

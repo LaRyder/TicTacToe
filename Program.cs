@@ -18,7 +18,6 @@ namespace TicTacToe
             Console.WriteLine("Let's Play TicTacToe");
             Console.WriteLine(" Player = O;  Computer = X ");
             Console.WriteLine("\n");
-            Board.ShowBoard();
 
             Game play = new Game();
             play.letsPlay();
