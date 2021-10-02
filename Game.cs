@@ -9,54 +9,81 @@ namespace TicTacToe
 {
     public class Game
     {
-        private Program program;
+        //need to know if it was a win loss or draw
         private Board board;
-        private Result result;
 
+        Random rnd = new Random();
+        static int player = 0;
+        static char Letter;
 
-        static int player = 1;
-        static int choice;
-        static char[] arr;
-
-        public static void LetsPlay()
+        public void letsPlay()
         {
+            board = new Board();
 
+            while (board.SpotsFilled < 9 && !GameOver())    //do this process until the board is filled
+            {
+                Board.ShowBoard();           //show the board
+                SwitchPlayer();                     //switch turns
+            }
+
+            if (board.WinningLetter == '\0')
+            {
+                Board.ShowBoard();
+                Console.WriteLine("It was a tie, better luck next time");
+            }
+            else
+            {
+                if (board.WinningLetter == 'X')
+                {
+                    Console.WriteLine("The computer won....womp");
+                }
+                else
+                    Console.WriteLine("YOU WON!");
+            }
+        }
+
+        private void SwitchPlayer()
+        {
+            player++;
             if (player % 2 == 0)
             {
                 Console.WriteLine("Now it is the computers turn...");
+                ComputerTakesTurn();
             }
             else
             {
                 Console.WriteLine("Player, it is your turn...");
 
+                Letter = char.Parse(Console.ReadLine());        //get what spot is being taken now
+
+                int spot = Array.IndexOf(board.BoardArray, Letter);
+                board.takeTurn(spot, 'O');
             }
-            Console.WriteLine("\n");
+        }
 
-            choice = char.Parse(Console.ReadLine());
-
-            if (Array.IndexOf(arr, choice) >= 0 )
+        private void ComputerTakesTurn()
+        {
+            int t = rnd.Next(0, 9);
+            if (board.BoardArray[t] == 'O' || board.BoardArray[t] == 'X')
             {
-                if (player % 2 == 0)
-                {
-                    var index = Array.IndexOf(arr, choice);
-
-                    arr[index] = 'O';
-                    player++;
-                }
-                else
-                {
-                    var index = Array.IndexOf(arr, choice);
-                    arr[index] = 'X';
-                    player++;
-                }
+                ComputerTakesTurn();    //Find another random spot
             }
             else
             {
-                Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, arr[choice]);
-                Console.WriteLine("\n");
-                Console.WriteLine("Please wait a few seconds while the board is reloading...");
-                Thread.Sleep(2000);
+                board.takeTurn(t, 'X');
             }
+        }
+
+        private bool GameOver()
+        {
+            if (board.FoundMatchingThree())
+                return true;
+
+            //check if full board
+            if (board.SpotsFilled >= 9)
+                return true;
+
+            return false;
         }
     }
 }

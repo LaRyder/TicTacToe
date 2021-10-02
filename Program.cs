@@ -6,9 +6,8 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-           // char[] arr = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
-
             Console.ForegroundColor = ConsoleColor.Blue;
+
             Console.WriteLine(".-----. _         .-----.             .-----.            ");
             Console.WriteLine("`-. .-':_;        `-. .-'             `-. .-'            ");
             Console.WriteLine("  : :  .-. .--.     : : .--.   .--.     : : .--.  .--.   ");
@@ -19,10 +18,10 @@ namespace TicTacToe
             Console.WriteLine("Let's Play TicTacToe");
             Console.WriteLine(" Player = O;  Computer = X ");
             Console.WriteLine("\n");
-            Board.Layout();
+            Board.ShowBoard();
 
-            Game game = new Game();
-            Game.LetsPlay();
+            Game play = new Game();
+            play.letsPlay();
         }
     }
 }
