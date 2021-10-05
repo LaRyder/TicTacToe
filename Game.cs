@@ -16,7 +16,7 @@ namespace TicTacToe
         static int player = 0;
         static char Letter;
 
-        public void letsPlay()
+        public void LetsPlay()
         {
             board = new Board();
 
@@ -29,26 +29,33 @@ namespace TicTacToe
             if (board.WinningLetter == '\0')
             {
                 Board.ShowBoard();
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("It was a tie, better luck next time");
+                Console.ResetColor();
             }
             else
             {
                 if (board.WinningLetter == 'X')
                 {
-                    Console.WriteLine("The computer won....WOMP WOMP WOOOMMMMMPPPP");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" :( The computer won....WOMP WOMP WOOOMMMMMPPPP :( ");
+                    Console.ResetColor();
                 }
-                else
-                Console.ForegroundColor = ConsoleColor.Blue;
 
-                Console.WriteLine(" ÛÛÛÛÛ ÛÛÛÛÛ                        ÛÛÛÛÛ   ÛÛÛ   ÛÛÛÛÛ                       ||  ||   ");
-                Console.WriteLine("°°ÛÛÛ °°ÛÛÛ                        °°ÛÛÛ   °ÛÛÛ  °°ÛÛÛ                        ||  ||   ");
-                Console.WriteLine(" °°ÛÛÛ ÛÛÛ    ÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛ    °ÛÛÛ   °ÛÛÛ   °ÛÛÛ   ÛÛÛÛÛÛ  ÛÛÛÛÛÛÛÛ     ||  ||   ");
-                Console.WriteLine("  °°ÛÛÛÛÛ    ÛÛÛ°°ÛÛÛ°°ÛÛÛ °ÛÛÛ     °ÛÛÛ   °ÛÛÛ   °ÛÛÛ  ÛÛÛ°°ÛÛÛ°°ÛÛÛ°°ÛÛÛ    ||  ||   ");
-                Console.WriteLine("   °°ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ     °°ÛÛÛ  ÛÛÛÛÛ  ÛÛÛ  °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
-                Console.WriteLine("    °ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ      °°°ÛÛÛÛÛ°ÛÛÛÛÛ°   °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
-                Console.WriteLine("    ÛÛÛÛÛ   °°ÛÛÛÛÛÛ  °°ÛÛÛÛÛÛÛÛ       °°ÛÛÛ °°ÛÛÛ     °°ÛÛÛÛÛÛ  ÛÛÛÛ ÛÛÛÛÛ            ");
-                Console.WriteLine("    °°°°°     °°°°°°    °°°°°°°°         °°°   °°°       °°°°°°  °°°° °°°°°   °°  °°   ");
-                Console.ResetColor();
+                else if (board.WinningLetter == 'O')
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+
+                    Console.WriteLine(" ÛÛÛÛÛ ÛÛÛÛÛ                        ÛÛÛÛÛ   ÛÛÛ   ÛÛÛÛÛ                       ||  ||   ");
+                    Console.WriteLine("°°ÛÛÛ °°ÛÛÛ                        °°ÛÛÛ   °ÛÛÛ  °°ÛÛÛ                        ||  ||   ");
+                    Console.WriteLine(" °°ÛÛÛ ÛÛÛ    ÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛ    °ÛÛÛ   °ÛÛÛ   °ÛÛÛ   ÛÛÛÛÛÛ  ÛÛÛÛÛÛÛÛ     ||  ||   ");
+                    Console.WriteLine("  °°ÛÛÛÛÛ    ÛÛÛ°°ÛÛÛ°°ÛÛÛ °ÛÛÛ     °ÛÛÛ   °ÛÛÛ   °ÛÛÛ  ÛÛÛ°°ÛÛÛ°°ÛÛÛ°°ÛÛÛ    ||  ||   ");
+                    Console.WriteLine("   °°ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ     °°ÛÛÛ  ÛÛÛÛÛ  ÛÛÛ  °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
+                    Console.WriteLine("    °ÛÛÛ    °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ      °°°ÛÛÛÛÛ°ÛÛÛÛÛ°   °ÛÛÛ °ÛÛÛ °ÛÛÛ °ÛÛÛ    ||  ||   ");
+                    Console.WriteLine("    ÛÛÛÛÛ   °°ÛÛÛÛÛÛ  °°ÛÛÛÛÛÛÛÛ       °°ÛÛÛ °°ÛÛÛ     °°ÛÛÛÛÛÛ  ÛÛÛÛ ÛÛÛÛÛ            ");
+                    Console.WriteLine("    °°°°°     °°°°°°    °°°°°°°°         °°°   °°°       °°°°°°  °°°° °°°°°   °°  °°   ");
+                    Console.ResetColor();
+                }
             }
         }
 
@@ -64,12 +71,12 @@ namespace TicTacToe
             {
                 Console.WriteLine("Player, it is your turn...");
 
-                Letter = char.Parse(Console.ReadLine());        //get what spot is being taken now
+                Letter = char.Parse(Console.ReadLine().ToUpper());        //get what spot is being taken now
 
                 int spot = Array.IndexOf(board.BoardArray, Letter);
                 board.takeTurn(spot, 'O');
                 Console.Clear();
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
 
@@ -84,7 +91,7 @@ namespace TicTacToe
             {
                 board.takeTurn(t, 'X');
                 Console.Clear();
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
 

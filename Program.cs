@@ -6,7 +6,7 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Green;
 
             Console.WriteLine(".-----. _         .-----.             .-----.            ");
             Console.WriteLine("`-. .-':_;        `-. .-'             `-. .-'            ");
@@ -15,12 +15,15 @@ namespace TicTacToe
             Console.WriteLine("  :_;  :_;`.__.'    :_;`.__,_;`.__.'    :_;`.__.'`.__.'  ");
             Console.ResetColor();
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Let's Play TicTacToe");
-            Console.WriteLine(" Player = O;  Computer = X ");
+            Console.WriteLine("Player = O ;  Computer = X");
             Console.WriteLine("\n");
+            Console.ResetColor();
 
             Game play = new Game();
-            play.letsPlay();
+            play.LetsPlay();
+
         }
     }
 }
