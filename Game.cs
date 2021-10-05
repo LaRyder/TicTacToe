@@ -20,10 +20,10 @@ namespace TicTacToe
         {
             board = new Board();
 
-            while (board.SpotsFilled < 9 && !GameOver())    //do this process until the board is filled
+            while (board.SpotsFilled < 9 && !GameOver())  //do this process until the board is filled
             {
-                Board.ShowBoard();           //show the board
-                SwitchPlayer();                     //switch turns
+                Board.ShowBoard();  //show the board
+                SwitchPlayer();     //switch turns
             }
 
             if (board.WinningLetter == '\0')
@@ -71,7 +71,7 @@ namespace TicTacToe
             {
                 Console.WriteLine("Player, it is your turn...");
 
-                Letter = char.Parse(Console.ReadLine().ToUpper());        //get what spot is being taken now
+                Letter = char.Parse(Console.ReadLine().ToLower());        //get what spot is being taken now
 
                 int spot = Array.IndexOf(board.BoardArray, Letter);
                 board.takeTurn(spot, 'O');

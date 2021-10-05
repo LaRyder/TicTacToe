@@ -10,7 +10,7 @@ namespace TicTacToe
 
     public class Board
     {
-        static char[] arr = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+        static char[] arr = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
         int spotsFilled = 0;
         char matchingLetter;
 
@@ -50,9 +50,11 @@ namespace TicTacToe
             }
             catch(System.IndexOutOfRangeException e)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("OOPS, Invalid Character... please select a letter from the board");
                 Console.WriteLine(e);
                 Thread.Sleep(2000);
+                Console.ResetColor();
             }
         }
 
